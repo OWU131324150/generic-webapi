@@ -9,7 +9,7 @@ A flexible Node.js web API that allows you to create LLM-powered applications by
   行き先や日数、予算、気分を入力すると、AIが週末の旅程を提案します。  
   ウェブ検索で見つけた観光スポットと参照元リンクも確認できます。  
   使い方は作品ページ内に案内しています。
-- **作品URL**：Render 公開後に `https://<Renderサービス名>.onrender.com/tabi.html` を記入してください。
+- **作品URL**：https://generic-webapi-kc53.onrender.com/tabi.html
 - **作品ソース**：https://github.com/OWU131324150/generic-webapi
 
 ### Render への公開

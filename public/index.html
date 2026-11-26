@@ -3,41 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>アプリ一覧</title>
+    <meta name="theme-color" content="#f6f4ed">
+    <title>よりみち日和 | AIアプリ</title>
     <style>
-        body { font-family: sans-serif; max-width: 640px; margin: 40px auto; padding: 0 16px; color: #333; }
-        h1 { font-size: 1.4rem; }
-        ul { list-style: none; padding: 0; }
-        li { padding: 12px 0; border-bottom: 1px solid #eee; }
-        a { font-size: 1.1rem; text-decoration: none; color: #0366d6; }
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;600&display=swap');
+        *{box-sizing:border-box}body{margin:0;background:#f6f4ed;color:#26382f;font-family:'DM Sans','Noto Sans JP',sans-serif}.shell{max-width:940px;margin:auto;padding:0 38px}.top{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #dfe2d8}.brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.04em}.mark{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#435b4b;color:white;font-family:serif;font-size:20px;font-style:italic}.top small,.eyebrow{font-size:9px;letter-spacing:.17em;color:#768174;font-weight:700}.intro{padding:65px 0 31px}.eyebrow{margin:0 0 13px}.intro h1{font-family:'Shippori Mincho','Noto Sans JP',serif;font-weight:500;font-size:clamp(34px,5vw,53px);line-height:1.5;letter-spacing:.04em;margin:0}.intro h1 em{color:#b77b44;font-style:normal}.intro p:last-child{font-size:12px;color:#7b8279;line-height:1.9;margin:11px 0 0}.featured{display:grid;grid-template-columns:1fr 220px;gap:20px;align-items:center;background:#e4e9dc;padding:27px 30px;border-radius:4px;text-decoration:none;color:inherit;transition:transform .2s,box-shadow .2s}.featured:hover{transform:translateY(-2px);box-shadow:0 10px 25px #34483a12}.feature-tag{font-size:8px;letter-spacing:.18em;color:#728173;font-weight:700}.featured h2{font-family:'Shippori Mincho','Noto Sans JP',serif;font-size:24px;font-weight:600;margin:6px 0}.featured p{font-size:11px;color:#748075;margin:0}.feature-link{justify-self:end;padding:12px 16px;background:#435b4b;color:#fff;font-size:10px;letter-spacing:.05em;border-radius:3px}.apps-heading{margin:42px 0 12px;display:flex;align-items:center;gap:10px}.apps-heading h2{font-size:12px;letter-spacing:.1em;margin:0}.apps-heading span{font-size:8px;color:#92998f}.app-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:11px;margin:0 0 50px;padding:0;list-style:none}.app-list a{display:flex;align-items:center;justify-content:space-between;border:1px solid #e0e2d9;background:#fffefa;border-radius:3px;padding:15px 16px;text-decoration:none;color:#43564a;font-size:11px;transition:border-color .2s}.app-list a:hover{border-color:#9eae9c}.app-list b{font-weight:600}.app-list i{font-size:14px;color:#b47e4b;font-style:normal}.footer{height:57px;border-top:1px solid #dfe2d8;display:flex;align-items:center;justify-content:space-between;color:#92988f;font-size:8px;letter-spacing:.12em}.footer span:first-child{color:#bd8851}@media(max-width:600px){.shell{padding:0 18px}.intro{padding:48px 0 24px}.featured{grid-template-columns:1fr;padding:22px}.feature-link{justify-self:start}.apps-heading{margin-top:32px}.footer{font-size:7px}}
+        .top small,.eyebrow{font-size:10px}
+        .intro p:last-child{font-size:13px}
+        .feature-tag{font-size:9px}
+        .featured h2{font-size:25px}
+        .featured p{font-size:12px}
+        .feature-link{font-size:11px}
+        .apps-heading h2{font-size:13px}
+        .apps-heading span{font-size:9px}
+        .app-list a{font-size:12px}
+        .footer{font-size:9px}
+        @media(max-width:600px){.footer{font-size:8px}}
     </style>
 </head>
 <body>
-    <h1>アプリ一覧</h1>
-    <ul id="appList"></ul>
-
+    <div class="shell">
+        <header class="top"><div class="brand"><span class="mark">y</span>よりみち日和</div><small>SMALL IDEAS, GOOD DAYS</small></header>
+        <main>
+            <section class="intro">
+                <p class="eyebrow">AI MINI APPS</p>
+                <h1>好奇心から、<br><em>次の一歩</em>を。</h1>
+                <p>テーマや条件を入れると、AIがあなたのためのアイデアを形にします。</p>
+            </section>
+            <a class="featured" href="tabi.html">
+                <div><span class="feature-tag">FEATURED · WEEKEND PLANNER</span><h2>いつもの週末に、小さな旅を。</h2><p>行き先と気分から、寄り道したくなる旅程をつくろう。</p></div>
+                <span class="feature-link">旅のプランをつくる　↗</span>
+            </a>
+            <div class="apps-heading"><h2>アプリ一覧</h2><span>TRY ANOTHER IDEA</span></div>
+            <ul id="appList" class="app-list"><li>アプリを読み込み中…</li></ul>
+        </main>
+        <footer class="footer"><span>✳</span><span>MADE FOR CURIOUS MINDS</span><span>© 2026</span></footer>
+    </div>
     <script>
-        // サーバーから .html ファイルの一覧を取得してリンクを表示する
         async function loadPages() {
-            const response = await fetch('/api/pages');
-            const files = await response.json();
-
             const list = document.getElementById('appList');
-            if (files.length === 0) {
-                list.innerHTML = '<li>public/ に .html ファイルがありません。</li>';
-                return;
+            try {
+                const response = await fetch('/api/pages');
+                if (!response.ok) throw new Error('page list unavailable');
+                const files = await response.json();
+                list.replaceChildren();
+                const labels = { 'tabi.html': 'よりみち日和｜週末の小さな旅', 'quiz.html': 'ITパスポート対策クイズ' };
+                for (const file of files.filter(name => name !== 'tabi.html')) {
+                    const item = document.createElement('li');
+                    const link = document.createElement('a');
+                    link.href = file;
+                    const name = document.createElement('b');
+                    name.textContent = labels[file] || file.replace('.html', '');
+                    const arrow = document.createElement('i');
+                    arrow.textContent = '↗';
+                    link.append(name, arrow);
+                    item.append(link);
+                    list.append(item);
+                }
+                if (!files.length) list.textContent = '公開中のアプリはありません。';
+            } catch {
+                list.textContent = 'アプリ一覧を読み込めませんでした。';
             }
-
-            files.forEach(name => {
-                const li = document.createElement('li');
-                const a = document.createElement('a');
-                a.href = name;
-                a.textContent = name;
-                li.appendChild(a);
-                list.appendChild(li);
-            });
         }
-
         loadPages();
     </script>
 </body>

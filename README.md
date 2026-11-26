@@ -2,6 +2,20 @@
 
 A flexible Node.js web API that allows you to create LLM-powered applications by simply editing a Markdown prompt file. No code changes required for different use cases.
 
+## 中間課題の提出情報
+
+- **作品名**：よりみち日和 — AI週末旅プランナー
+- **作品概要**：
+  行き先や日数、予算、気分を入力すると、AIが週末の旅程を提案します。  
+  ウェブ検索で見つけた観光スポットと参照元リンクも確認できます。  
+  使い方は作品ページ内に案内しています。
+- **作品URL**：Render 公開後に `https://<Renderサービス名>.onrender.com/tabi.html` を記入してください。
+- **作品ソース**：https://github.com/OWU131324150/generic-webapi
+
+### Render への公開
+
+Render で Web Service を作成し、Build Command に `npm install`、Start Command に `npm start` を設定します。Environment Variables に `OPENAI_API_KEY` を登録してください。公開後の作品ページは `/tabi.html` です。旅程生成には OpenAI API キーと API 利用料金が必要です。
+
 ## Features
 
 - 🎯 **Generic Design**: One API endpoint for any LLM application
@@ -114,7 +128,18 @@ Format: JSON array
 
 ## Example Applications
 
-### 1. IT Certification Quiz (Included)
+### 1. よりみち日和（週末の小さな旅プランナー）
+
+**Files:**
+- `itinerary-prompt.md` - 旅程JSONの生成ルール
+- `public/tabi.html`, `public/tabi.css`, `public/tabi.js` - 入力フォームと旅程表示
+- `POST /api/itinerary` - 旅の条件をLLMに渡すAPI
+
+行き先、日数、予算、旅の気分、同行者を入力すると、OpenAI Responses API のウェブ検索で実在するスポットを調べ、その結果を使ってAIが旅程をJSONで生成します。画面には旅程に加えて、検索で参照したページへのリンクも表示します。検索機能には有効な OpenAI API キーが必要で、OpenAI の API 利用料金がかかります。
+
+旅の風景イラストは、このアプリ用にSVGで自作しています。外部の写真や音源は使用していません。
+
+### 2. IT Certification Quiz (Included)
 
 **Files:**
 - `prompt.md` - Defines IT quiz generation logic
@@ -122,7 +147,7 @@ Format: JSON array
 
 **Usage:** Generate IT certification practice questions
 
-### 2. Translation App (Example)
+### 3. Translation App (Example)
 
 **prompt.md:**
 ```markdown
@@ -143,7 +168,7 @@ Return only the translated text.
 }
 ```
 
-### 3. Code Review App (Example)
+### 4. Code Review App (Example)
 
 **prompt.md:**
 ```markdown

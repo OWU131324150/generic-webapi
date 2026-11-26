@@ -103,12 +103,10 @@
                     })
                 });
 
+                const data = await readApiResponse(response);
                 if (!response.ok) {
-                    const error = await response.json();
-                    throw new Error(error.error || 'API error');
+                    throw new Error(data.error || 'API error');
                 }
-
-                const data = await response.json();
                 quizData = data.data;
 
                 if (!Array.isArray(quizData) || quizData.length === 0) {
@@ -125,6 +123,19 @@
                 alert('クイズの生成に失敗しました: ' + error.message);
             } finally {
                 document.getElementById('loading').classList.remove('show');
+            }
+        }
+
+        async function readApiResponse(response) {
+            const body = await response.text();
+            try {
+                return JSON.parse(body);
+            } catch {
+                if (/^\s*</.test(body) || (response.headers.get('content-type') || '').includes('text/html')) {
+                const apiUrl = new URL('/api/', window.location.origin).href;
+                throw new Error(`クイズAPIがHTMLを返しました (${apiUrl})。Cloud Shellのターミナルでサーバーを再起動し、このページを再読み込みしてください。`);
+                }
+                throw new Error(`APIの応答を読み取れませんでした (HTTP ${response.status})。`);
             }
         }
 

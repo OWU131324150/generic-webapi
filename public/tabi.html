@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f6f4ed">
+    <meta name="description" content="行き先と気分を入力して、AIと週末の小さな旅を計画しよう。">
+    <title>よりみち日和 | AI週末旅プランナー</title>
+    <link rel="stylesheet" href="tabi.css">
+    <script src="tabi.js" defer></script>
+</head>
+<body>
+    <div class="page-shell">
+        <header class="topbar">
+            <a class="brand" href="tabi.html" aria-label="よりみち日和 ホーム">
+                <span class="brand-mark" aria-hidden="true">y</span>
+                <span>よりみち日和</span>
+            </a>
+            <span class="top-note"><span class="live-dot"></span> AI WEEKEND PLANNER</span>
+        </header>
+
+        <main>
+            <section class="hero" aria-labelledby="hero-title">
+                <div class="hero-copy">
+                    <p class="eyebrow">MAKE ROOM FOR A LITTLE ADVENTURE</p>
+                    <h1 id="hero-title">いつもの週末に、<br><em>小さな旅</em>を。</h1>
+                    <p class="hero-description">行き先と気分を教えてください。あなたにちょうどいい寄り道を、AIが旅程にしてお届けします。</p>
+                    <div class="hero-footnote"><span class="sun-icon" aria-hidden="true">✳</span> 予定を詰め込みすぎない、ゆったり旅の提案</div>
+                </div>
+                <div class="hero-art" aria-hidden="true">
+                    <div class="art-stamp">TAKE<br>THE<br>SCENIC<br>ROUTE</div>
+                    <svg class="landscape" viewBox="0 0 500 340" role="presentation">
+                        <circle cx="358" cy="98" r="55" fill="#e9a75f"/>
+                        <path d="M0 228 115 104l66 77 83-111 126 151 48-62 62 78v103H0z" fill="#91a08a"/>
+                        <path d="m111 109 20 24-19-6-16 16zm151-36 24 32-22-9-17 16z" fill="#f6f4ed" opacity=".9"/>
+                        <path d="M0 250q90-64 178 0t174 0 148 8v82H0z" fill="#d3b991"/>
+                        <path d="M0 294q85-51 174-3t166-4 160 4v49H0z" fill="#697e70"/>
+                        <path d="M234 340q23-43 2-77t12-48q27-24 10-57" fill="none" stroke="#f6e9cc" stroke-width="11" stroke-linecap="round"/>
+                        <path d="M234 340q23-43 2-77t12-48q27-24 10-57" fill="none" stroke="#b69e79" stroke-width="2" stroke-dasharray="4 10"/>
+                        <g fill="#43584d"><path d="m58 286 20-48 20 48H58zm8-20 12-30 12 30H66zm-1 20h27v8H65z"/><path d="m399 270 25-61 25 61h-50zm10-25 15-36 15 36h-30zm-2 25h34v9h-34z"/></g>
+                        <g fill="#fffaf0"><circle cx="56" cy="97" r="2"/><circle cx="88" cy="74" r="2"/><circle cx="420" cy="73" r="2"/></g>
+                    </svg>
+                    <span class="art-caption">GOOD DAYS<br>ARE MADE OF DETOURS</span>
+                    <span class="art-number">01 — 03 DAYS</span>
+                </div>
+            </section>
+
+            <section class="planner-layout" aria-label="旅の条件を入力">
+                <div class="form-panel">
+                    <div class="panel-heading">
+                        <span class="step-number">01</span>
+                        <div><p class="eyebrow">YOUR WEEKEND, YOUR WAY</p><h2>旅のことを教えてください</h2></div>
+                    </div>
+                    <form id="trip-form">
+                        <div class="field-block">
+                            <label for="destination">どこへ行きたい？</label>
+                            <div class="input-wrap"><span class="field-icon" aria-hidden="true">⌖</span><input id="destination" name="destination" type="text" placeholder="例：鎌倉、長野の山あい" maxlength="60" required></div>
+                            <p class="field-hint">街やエリア、行ってみたい場所をどうぞ</p>
+                        </div>
+
+                        <div class="field-grid">
+                            <div class="field-block">
+                                <label for="days">何日くらい？</label>
+                                <div class="select-wrap"><select id="days" name="days"><option value="1">日帰り</option><option value="2">1泊2日</option><option value="3">2泊3日</option></select><span aria-hidden="true">⌄</span></div>
+                            </div>
+                            <div class="field-block">
+                                <label for="budget">予算の目安</label>
+                                <div class="select-wrap"><select id="budget" name="budget"><option value="ひとり5,000円くらい">¥ おさえめ</option><option value="ひとり15,000円くらい" selected>¥¥ ほどよく</option><option value="ひとり30,000円くらい">¥¥¥ ちょっと贅沢</option></select><span aria-hidden="true">⌄</span></div>
+                            </div>
+                        </div>
+
+                        <fieldset class="field-block mood-field">
+                            <legend>どんな気分？</legend>
+                            <div class="mood-options">
+                                <label class="mood-option"><input type="radio" name="mood" value="自然の中でのんびり" checked><span><i>◒</i> 自然に癒やされたい</span></label>
+                                <label class="mood-option"><input type="radio" name="mood" value="おいしいものを巡る"><span><i>♨</i> おいしいもの巡り</span></label>
+                                <label class="mood-option"><input type="radio" name="mood" value="街歩きと文化を楽しむ"><span><i>⌂</i> 街歩きしたい</span></label>
+                                <label class="mood-option"><input type="radio" name="mood" value="アクティブに体を動かす"><span><i>↗</i> アクティブに</span></label>
+                            </div>
+                        </fieldset>
+
+                        <div class="field-block companion-field">
+                            <label for="companion">誰と行く？</label>
+                            <div class="select-wrap"><select id="companion" name="companion"><option value="ひとり旅">ひとり旅</option><option value="友人と">友人と</option><option value="家族と">家族と</option><option value="パートナーと">パートナーと</option></select><span aria-hidden="true">⌄</span></div>
+                        </div>
+                        <button class="submit-button" type="submit"><span>旅のプランをつくる</span><span class="button-arrow" aria-hidden="true">↗</span></button>
+                        <p class="privacy-note"><span aria-hidden="true">✳</span> 入力条件とウェブ検索をもとに、AIが旅程を提案します</p>
+                    </form>
+                </div>
+
+                <section class="result-panel" id="result-panel" aria-live="polite" aria-label="旅のプラン">
+                    <div class="result-empty" id="empty-state">
+                        <div class="empty-orbit"><span>✳</span><i>⌖</i></div>
+                        <p class="eyebrow">YOUR NEXT STORY STARTS HERE</p>
+                        <h2>行き先を決めたら、<br>旅のはじまり。</h2>
+                        <p class="empty-description">左のフォームに希望を入れて<br>「旅のプランをつくる」を押してください。</p>
+                        <div class="empty-suggestion"><span>たとえば</span><b>「海の見える静かな町」</b></div>
+                        <div class="empty-lines"><span></span><span></span><span></span></div>
+                    </div>
+                    <div class="loading-state" id="loading-state" hidden>
+                        <div class="loading-sun">✳</div>
+                        <p class="eyebrow">MAKING YOUR LITTLE GETAWAY</p>
+                        <h2>いい寄り道を<br>探しています…</h2>
+                        <p>行き先の情報を検索して<br>旅程を組み立てています。</p>
+                        <div class="loading-track"><span></span></div>
+                    </div>
+                    <div class="trip-result" id="trip-result" hidden></div>
+                </section>
+            </section>
+        </main>
+
+        <footer class="footer"><a href="index.html">アプリ一覧へ戻る</a><span>MADE FOR SLOW WEEKENDS <i>✳</i></span><span>よりみち日和 © 2026</span></footer>
+    </div>
+    <div class="toast" id="toast" role="alert" aria-live="assertive"></div>
+</body>
+</html>
